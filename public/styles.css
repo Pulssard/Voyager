@@ -1,0 +1,281 @@
+:root {
+  --background-image: url("./static/milky-way.jpg");
+}
+
+ #root{
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+    color:black;
+    margin:0;
+    padding:0;
+    min-height:100vh;
+    overflow-x: hidden;
+}
+
+
+#root>:nth-child(2) {
+  flex:1;
+}
+
+Nav{
+  flex-grow: 0 0 auto;
+}
+
+#footer{
+color:white;
+height:9rem;
+background-image:var(--background-image);
+flex:0 0 auto;
+font-family:"Orbitron", sans-serif;
+}
+
+.container-md, .container-md>.row{
+  height:100%;
+  padding-top: 0.8em;
+}
+
+#footer > div > div > div:nth-child(2){
+  display: flex;
+  align-items: end;
+  justify-content: end;
+}
+.header-background{
+  background-image: var(--background-image);
+}
+#navbarScrollingDropdown{
+  color:white !important;
+}
+
+Header{
+  margin-bottom: 2rem;
+  font-size: larger;
+  
+}
+
+#root>:nth-child(2).card{
+  width:350px;
+  margin:2em auto;
+ 
+}
+
+.productsCarousel{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: start;
+    gap:2rem;
+    padding-bottom: 2rem;
+}
+
+.productsCarousel .card{
+    width: 300px;
+}
+
+.news-container {
+    font-family: 'Roboto', sans-serif;
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+    margin-bottom: 2rem;
+  }
+ 
+  .news-item {
+    background-color: #f9f9f9;
+    padding: 1.25rem; 
+    border-radius: 0.3125rem; 
+    box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.1); 
+    
+    
+  }
+  
+  .news-title {
+    color: #333;
+    font-size: 1.5rem; 
+    margin-bottom: 0.625rem; 
+  }
+  
+  .news-text {
+    color: #666;
+    font-size: 1rem; 
+    line-height: 1.5; 
+  }
+
+  .newsImg{
+    width:300px;
+    height:180px;
+    float:left;
+    border-radius: 5px;
+    margin-right: 1rem;
+  }
+
+.cart-container{
+  background-color: #f9f9f9;
+  padding: 1.25rem; 
+  border-radius: 0.3125rem;
+  box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.1); 
+  text-align: center;
+  position: relative;
+  
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;  
+  gap:1em;
+}
+
+
+
+.clear-icon{
+  position: absolute;
+  right:0.3em;
+  top:0.3em;
+  cursor: pointer;
+}
+
+.cartImg{
+  width:180px;
+  height:160px;
+  position: relative;
+}
+
+.floatRight{
+  box-sizing: border-box;
+  float:right;
+  margin-left: 3rem;
+
+}
+  
+.priceFlex{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+ 
+}
+  
+.saleLabel{
+  position:absolute;
+  right:-15px;
+  top:-15px;
+  width: 60px; 
+  height: 60px; 
+  border-radius: 50%; 
+  background-color: black; 
+  box-shadow: 0 0 15px 13px rgba(200, 155, 50, 0.8);
+  color:rgba(200, 155, 50, 0.8); 
+  text-align: center;
+  font-family:"Orbitron", sans-serif;
+  letter-spacing: 0.2em;
+}
+
+.saleLabel > div{
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+
+.cart{
+  padding:2rem;
+  font-family: 'Roboto', sans-serif;
+}
+
+ h1{
+  text-align: center;
+
+}
+
+.gradient-text {
+  background-image: var(--background-image);
+  -webkit-background-clip: text; 
+  background-clip: text;
+  color: transparent; 
+}
+
+.list-group > li:hover {
+  background-color: black;
+  cursor: pointer;
+  color:white;
+}
+
+.cardImg{
+  width:250px;
+  height: 250px;
+}
+
+#root > div >  div.col-md-4 > button{
+  width:100%;
+  padding:0.3em;
+  font-family: 'Roboto', sans-serif;
+  font-size: 2rem;
+  font-weight:500;
+  
+}
+
+.react-multi-carousel-list{
+  margin:0 2em;
+  padding-top: 2em;
+  margin-bottom:1em;
+}
+
+.card{
+  margin-right: 1em;
+  display:flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 100%;
+}
+
+
+.card-body{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  flex-grow: 1;
+}
+
+.cart-img{
+  width:300px;
+  border-radius: 50%;
+  margin: 1em auto;
+  align-self: center !important;
+}
+
+.navbar-toggler-icon {
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='white' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e") !important;
+}
+
+#root > div > div.col-md-4{
+  margin:1em;
+}
+
+.list-group-item.active, #dropdown-item-button, .dropdown-item:hover,#root > form > button{
+  background-color: black !important;
+  border-color: gold !important;
+  color:white !important;
+}
+.cart-label{
+  color:white; 
+}
+
+.cart-header{
+display: flex;
+}
+.container.settings-container{
+  max-width:800px;
+  outline:solid black 2px;
+  margin-bottom: 2rem;
+  padding:2rem 2rem;
+  box-shadow: 0 0 15px 13px rgba(200, 155, 50, 0.8);
+}
+
+#rocket-down{
+  transform: rotate(180deg);
+}
+
+
+@media (max-width:510px){
+  .newsImg{
+    width:100%;
+  }
+} */
