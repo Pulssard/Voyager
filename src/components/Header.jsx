@@ -15,14 +15,15 @@ import SatelliteAltIcon from '@mui/icons-material/SatelliteAlt';
 import ShoppingBagOutlinedIcon from '@mui/icons-material/ShoppingBagOutlined';
 import planets,{ constellations, galaxies, stars } from './planets';
 import ProductCard from './ProductCard';
+import Alert from "./Alert";
+import Faq from "./Faq";
 
 function Header() {
   const [cartProducts, setCartProducts] = useState([]);
   const [searchInput, setSearchInput] = useState("");
   const [searchItem, setSearchItem] = useState([]);
   const [quantity, setQuantity] = useState();
-
-
+ 
  function handleSearchChange(event){
   const value = event.target.value;
   if(value.length > 0 ){
@@ -32,7 +33,7 @@ function Header() {
 
   function handleSearchClick(e){ 
     const allProducts = [...planets, ...constellations, ...stars, ...galaxies];
-    const searchedProduct = allProducts.filter(product => product.title.toLowerCase() === searchInput);
+    const searchedProduct = allProducts.filter(product => product.title.toLowerCase() === searchInput.toLowerCase());
     if(searchedProduct.length > 0){
       setSearchItem(searchedProduct);  
     } 
@@ -53,7 +54,7 @@ function Header() {
         // If the product doesn't exist, add it to the cartProducts array
         setCartProducts(prevValue => {
             return [...prevValue, props];
-        });
+        });      
   }}
 
   function changeAmount(props){
@@ -82,7 +83,7 @@ function Header() {
             <Nav.Link as={Link}  to="/products" style={{color:"white"}} >Products</Nav.Link>
             <Nav.Link as={Link} to="/news" style={{color:"white"}}>News</Nav.Link>
             <NavDropdown title="Profile" id="navbarScrollingDropdown" >
-              <NavDropdown.Item >smth</NavDropdown.Item>
+              <NavDropdown.Item as={Link} to="/faq">F.A.Q</NavDropdown.Item>
               <NavDropdown.Item as={Link} to="/settings">
                 Settings
               </NavDropdown.Item>
@@ -108,12 +109,14 @@ function Header() {
         </Navbar.Collapse>
       </Container>
     </Navbar>
+    
     <Routes>
       <Route path="/products" element={<ProductsPage addProducts={addProducts} />} />
       <Route path="/" element={<Main addProducts={addProducts}  />} />
       <Route path="/news" element={<News />} />
       <Route path="chart" element={<Chart deleteItem={deleteItem} products={cartProducts} changeAmount={changeAmount} quantity={quantity || 1}/>} />
       <Route path="/settings" element={<Settings />} />
+      <Route path="/faq" element={<Faq />} />
       <Route path="/searchproduct" element={searchItem.length > 0 && (
     <ProductCard 
       title={searchItem[0].title} 

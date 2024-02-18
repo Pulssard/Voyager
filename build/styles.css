@@ -13,18 +13,8 @@
     overflow-x: hidden;
 }
 
-#root > div > div > button.react-multiple-carousel__arrow.react-multiple-carousel__arrow--left{
-  left:0;
-}
-#root > div > div > button.react-multiple-carousel__arrow.react-multiple-carousel__arrow--right{
-right:0;
-
-}
-
-footer p,#footer > div > div > div:nth-child(1),#footer > div > div{
+footer p{
   margin-bottom: 0 !important;
-  border:0 !important;
-  padding:0 !important;
 }
 #root>:nth-child(2) {
   flex:1;
@@ -62,6 +52,7 @@ font-family:"Orbitron", sans-serif;
 Header{
   margin-bottom: 2rem;
   font-size: larger;
+  
 }
 
 #root>:nth-child(2).card{
@@ -171,7 +162,7 @@ Header{
   height: 60px; 
   border-radius: 50%; 
   background-color: black; 
-  box-shadow: 0 0 10px 10px rgba(200, 155, 50, 0.5);
+  box-shadow: 0 0 15px 13px rgba(200, 155, 50, 0.8);
   color:rgba(200, 155, 50, 0.8); 
   text-align: center;
   font-family:"Orbitron", sans-serif;
@@ -185,9 +176,6 @@ Header{
   transform: translate(-50%, -50%);
 }
 
-.cart.row{
-  position: relative;
-}
 
 .cart{
   padding:2rem;
@@ -292,4 +280,4 @@ display: flex;
   .newsImg{
     width:100%;
   }
-} 
+} */

@@ -5,18 +5,19 @@ import ClearIcon from '@mui/icons-material/Clear';
 
 function CartProduct(props){
     const [amount, setAmount] = useState(props.quantity || 1);
+
     console.log(props.quantity)
     function handleChange(event){
+        event.target.select();
         const newValue = event.target.value;
-        if (/^\d+$/.test(newValue) && parseInt(newValue) > 0) {
+        if (/^\d+$/.test(newValue) && (parseInt(newValue) > 0) ) {
             if(amount !== newValue){
                 setAmount(newValue)
                 props.changeAmount(newValue, props.id);
             }     
-        }
-                
+        }         
     }
- 
+
     return (
         <div>
         <div className="cart-container container">
@@ -29,7 +30,7 @@ function CartProduct(props){
                 label="Set Amount"
                 
             >
-            <Form.Control className="inputCart" onChange={handleChange} value={amount} type="number" placeholder="Amount" />
+            <Form.Control className="inputCart" onFocus={handleChange} onChange={handleChange} value={amount || 1} type="number" placeholder="Amount" />
             </FloatingLabel>
             </div>
             <div className="priceFlex">

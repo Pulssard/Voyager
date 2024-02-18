@@ -5,6 +5,7 @@ import Button from "react-bootstrap/esm/Button";
 import Form from 'react-bootstrap/Form';
 import InputGroup from 'react-bootstrap/InputGroup';
 import CartProduct from "./CartProduct";
+import Modals from "./Modal";
 
  function Chart(props) {
     const [products, setProducts] = useState([...props.products]);
@@ -12,7 +13,11 @@ import CartProduct from "./CartProduct";
     const [promo,setPromo] = useState("");
     const [quantities, setQuantities] = useState(props.quantity);
     const [total, setTotal] = useState([]);
+    const [check, setCheck] = useState(false);
 
+    function checkOut(){
+        setCheck(true); 
+    }
 
     function changeAmount(newAmount, productId) {
         setQuantities(prevQuantities => {
@@ -20,6 +25,7 @@ import CartProduct from "./CartProduct";
             const updatedQuantities = { ...prevQuantities, [productId]: newAmount };
             // Call props.changeAmount with the updated quantities
             props.changeAmount(updatedQuantities);
+            totalPrice();
             return updatedQuantities; // Return the updated quantities
         });
         console.log(quantities); // This will log the previous state, not the updated one
@@ -37,11 +43,12 @@ import CartProduct from "./CartProduct";
         setPromo(promoInput);
     }
     function handleClick(){
-        if (promo === "moon"){//ideally moon should be in an .env file, but as a pet project it's not crucial
+        if (promo.toLowerCase() === "moon"){//ideally moon should be in an .env file, but as a pet project it's not crucial
             setIsPromo(true);//changin the isPromo to true if the promo applied in the promo input is the same as "moon"
         }
     }
     
+
     useEffect(() => {
         // Check for duplicate products
         const uniqueNewProducts = props.products.filter(newProduct => !products.some(existingProduct => existingProduct.id === newProduct.id));
@@ -106,9 +113,11 @@ import CartProduct from "./CartProduct";
             <p>Discount: <p className="floatRight" style={!isPromo ? {display: "none"} : {}}>15%</p></p>
             <hr></hr>
             <h2>TOTAL:{products.length >0 && parseFloat(total).toFixed(2) + "$"}</h2> 
-            <Button variant="warning">Checkout</Button>
+            <Button onClick={checkOut} variant="warning">Checkout</Button>
         </Col>
+            {check && <Modals state={check} changeState={() => setCheck(false)}/>}
         </Row>
+        
         </>
     );
 }
