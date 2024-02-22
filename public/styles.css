@@ -18,7 +18,20 @@
 }
 #root > div > div > button.react-multiple-carousel__arrow.react-multiple-carousel__arrow--right{
 right:0;
+}
 
+.pop-up{
+  border-radius: 5px;
+  left:50%;
+  transform: translateX(-50%);
+  z-index: 1;
+  color:white;
+  font-family:"Orbitron", sans-serif;
+  position:fixed;
+  display: block;
+  padding:0.2em;
+  bottom:0;
+  background-color: #4f4d4d;
 }
 
 footer p,#footer > div > div > div:nth-child(1),#footer > div > div{
@@ -73,10 +86,11 @@ Header{
 .productsCarousel{
     display: flex;
     flex-wrap: wrap;
-    justify-content: start;
+    justify-content: space-around;
     gap:2rem;
     padding-bottom: 2rem;
 }
+
 
 .productsCarousel .card{
     width: 300px;
@@ -257,10 +271,6 @@ Header{
 
 .navbar-toggler-icon {
   background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='white' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e") !important;
-}
-
-#root > div > div.col-md-4{
-  margin:1em;
 }
 
 .list-group-item.active, #dropdown-item-button, .dropdown-item:hover,#root > form > button{

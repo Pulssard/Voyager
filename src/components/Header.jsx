@@ -15,7 +15,6 @@ import SatelliteAltIcon from '@mui/icons-material/SatelliteAlt';
 import ShoppingBagOutlinedIcon from '@mui/icons-material/ShoppingBagOutlined';
 import planets,{ constellations, galaxies, stars } from './planets';
 import ProductCard from './ProductCard';
-import Alert from "./Alert";
 import Faq from "./Faq";
 
 function Header() {
@@ -23,7 +22,8 @@ function Header() {
   const [searchInput, setSearchInput] = useState("");
   const [searchItem, setSearchItem] = useState([]);
   const [quantity, setQuantity] = useState();
- 
+  const [isAdded, setIsAdded] = useState(false);
+
  function handleSearchChange(event){
   const value = event.target.value;
   if(value.length > 0 ){
@@ -54,8 +54,14 @@ function Header() {
         // If the product doesn't exist, add it to the cartProducts array
         setCartProducts(prevValue => {
             return [...prevValue, props];
-        });      
+        });
+        setIsAdded(true);//show the message that the product has been added to cart
+        setTimeout(() => {
+          setIsAdded(false);
+        },3000);
   }}
+
+
 
   function changeAmount(props){
     setQuantity(props);
@@ -109,7 +115,7 @@ function Header() {
         </Navbar.Collapse>
       </Container>
     </Navbar>
-    
+    {isAdded && <div className='pop-up'>Product has been added to cart!</div>}
     <Routes>
       <Route path="/products" element={<ProductsPage addProducts={addProducts} />} />
       <Route path="/" element={<Main addProducts={addProducts}  />} />

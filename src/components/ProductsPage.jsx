@@ -59,15 +59,15 @@ function ProductsPage(props){
 
     return(
         <Row>
-        <Col   md={2}>
+        <Col   md={3}>
             <ProdPgFilter filterProducts={filterProducts}/>
         </Col>
-        <Col md={10}>
-            <DropdownButton className="m-3" id="dropdown-item-button" title="Sort By">
+        <Col md={9} >
+            <DropdownButton className="m-3 mx-auto" id="dropdown-item-button" title="Sort By">
                 <Dropdown.Item as="button" onClick={sortAsc}> Price <RocketOutlinedIcon /> </Dropdown.Item>
                 <Dropdown.Item as="button" onClick={sortDesc}> Price <RocketOutlinedIcon id="rocket-down" /> </Dropdown.Item>
             </DropdownButton>
-            <div className="productsCarousel container">
+            <div className="productsCarousel ">
             { showProducts.map( product => (
             <ProductCard   addProducts={() => props.addProducts(product)} key={product.id} price={product.price} title={product.title} text={product.text} status={product.status}/>
             ))}
