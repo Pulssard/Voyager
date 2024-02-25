@@ -25,6 +25,7 @@ function Header() {
   const [isAdded, setIsAdded] = useState(false);
 
  function handleSearchChange(event){
+  console.log(event);
   const value = event.target.value;
   if(value.length > 0 ){
     setSearchInput(value);
@@ -32,6 +33,7 @@ function Header() {
  }
 
   function handleSearchClick(e){ 
+    setSearchItem("");
     const allProducts = [...planets, ...constellations, ...stars, ...galaxies];
     const searchedProduct = allProducts.filter(product => product.title.toLowerCase() === searchInput.toLowerCase());
     if(searchedProduct.length > 0){
@@ -39,8 +41,8 @@ function Header() {
     } 
  }
 
+
   function handleEnter(e){
-    
     if(e.key=== "Enter"){
       e.preventDefault();
       handleSearchClick(e);
@@ -55,7 +57,7 @@ function Header() {
         setCartProducts(prevValue => {
             return [...prevValue, props];
         });
-        setIsAdded(true);//show the message that the product has been added to cart
+        setIsAdded(true);//show the message that the product has been added to cart      
         setTimeout(() => {
           setIsAdded(false);
         },3000);
@@ -123,7 +125,8 @@ function Header() {
       <Route path="chart" element={<Chart deleteItem={deleteItem} products={cartProducts} changeAmount={changeAmount} quantity={quantity || 1}/>} />
       <Route path="/settings" element={<Settings />} />
       <Route path="/faq" element={<Faq />} />
-      <Route path="/searchproduct" element={searchItem.length > 0 && (
+      <Route path="/searchproduct" element={searchItem.length > 0 ? (
+        <div className="mainFlex">
     <ProductCard 
       title={searchItem[0].title} 
       text={searchItem[0].text} 
@@ -131,7 +134,8 @@ function Header() {
       status={searchItem[0].status} 
       addProducts={() => addProducts(searchItem[0])}
     />
-  )} />
+    </div>
+  ) : <div className="search-flex"><img className="not-found" src="https://astrobites.org/wp-content/uploads/2022/06/Galaxy-KK-246-is-isolated-in-a-cosmic-void.png" alt="cosmic void" /><p>There is no such product in our list, please try another one...</p></div>} />
     </Routes>
     </BrowserRouter>
   );

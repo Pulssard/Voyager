@@ -20,17 +20,20 @@
 right:0;
 }
 
+.mainFlex{
+  flex: 1;
+}
+
 .pop-up{
+  position:fixed;
   border-radius: 5px;
   left:50%;
   transform: translateX(-50%);
   z-index: 1;
   color:white;
   font-family:"Orbitron", sans-serif;
-  position:fixed;
-  display: block;
-  padding:0.2em;
   bottom:0;
+  padding:0.2em;
   background-color: #4f4d4d;
 }
 
@@ -77,16 +80,20 @@ Header{
   font-size: larger;
 }
 
-#root>:nth-child(2).card{
-  width:350px;
+#root>.mainFlex>.card{
+  width:300px;
   margin:2em auto;
- 
+}
+
+.pagination{
+  margin:1em auto;
+  
 }
 
 .productsCarousel{
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-around;
+    justify-content: start;
     gap:2rem;
     padding-bottom: 2rem;
 }
@@ -154,6 +161,7 @@ Header{
   right:0.3em;
   top:0.3em;
   cursor: pointer;
+  z-index: 1;
 }
 
 .cartImg{
@@ -192,6 +200,12 @@ Header{
   letter-spacing: 0.2em;
 }
 
+.search-flex > p {
+  margin-top:1em;
+  font-family:"Orbitron", sans-serif;
+  color:rgba(200, 155, 50, 0.8); 
+}
+
 .saleLabel > div{
   position: absolute;
   left: 50%;
@@ -203,7 +217,24 @@ Header{
   position: relative;
 }
 
+.not-found{
+  max-width: 400px;
+  max-height: 400px;
+  border-radius: 50%;
+
+}
+
+.search-flex{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex:1;
+  width:fit-content;
+  margin:auto;
+}
+
 .cart{
+  flex:1;
   padding:2rem;
   font-family: 'Roboto', sans-serif;
 }
@@ -229,6 +260,18 @@ Header{
 .cardImg{
   width:250px;
   height: 250px;
+}
+
+.flex-for-cart{
+  display:flex;
+  gap:2em;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-right:1em;
+}
+
+#root > div > div.col > img{
+  display: flex;
 }
 
 #root > div >  div.col-md-4 > button{
@@ -278,6 +321,20 @@ Header{
   border-color: gold !important;
   color:white !important;
 }
+
+.pagination>li *:hover,.pagination>li.page-item.active>* {
+  background-color: black !important;
+  border-color: white !important;
+  color:white !important;
+}
+.pagination>li *{
+  background-color: white !important;
+  color:black !important;
+  border-color: gold !important;
+
+}
+
+
 .cart-label{
   color:white; 
 }

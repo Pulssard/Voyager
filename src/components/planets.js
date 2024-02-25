@@ -12,7 +12,7 @@ const planets = [
         title: "Venus",
         text: "Venus is known for its thick atmosphere, composed mainly of carbon dioxide, and its extremely high surface temperatures.",
         path: "",
-        status: "sale",
+        status: "",
         price: 7
     },
     {
@@ -60,7 +60,7 @@ const planets = [
         title: "Neptune",
         text: "Neptune is the farthest planet from the Sun and is known for its deep blue coloration due to methane in its atmosphere.",
         path: "",
-        status: "sale" ,
+        status: "" ,
         price: 21
     }
     
@@ -85,7 +85,7 @@ const constellations = [
       id: 11,
       title: "Orion",
       text: "Orion is a prominent constellation located on the celestial equator and visible throughout the world.",
-      status: "sale",
+      status: "",
       price: 112
     }
   ];
@@ -109,7 +109,7 @@ const constellations = [
       id: 14,
       title: "Sun",
       text: "The Sun is the star at the center of the Solar System. It is a nearly perfect sphere of hot plasma, with internal convective motion that generates a magnetic field.",
-      status: "sale",
+      status: "",
       price: 96
     },
     {
@@ -126,7 +126,7 @@ const constellations = [
       id: 16,
       title: "Milky Way",
       text: "The Milky Way is the galaxy that contains our Solar System. It is a barred spiral galaxy with a diameter between 150,000 and 200,000 light-years.",
-      status: "sale",
+      status: "",
       price: 115
     },
     {

@@ -1,6 +1,6 @@
 import React from "react";
 import ProductCard from "./ProductCard";
-import planets from "./planets";
+import planets,{constellations, stars, galaxies} from "./planets";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 
@@ -24,13 +24,13 @@ const responsive = {
   }
 };
 
-
+const products = [...planets,...constellations,...galaxies,...stars];
 function SaleCarousel(props) {
   
   return (
 
     <Carousel responsive={responsive} autoPlay={true} autoPlaySpeed={2500} infinite={true}>
-    {planets.filter((planet) => planet.status === "sale")
+    {products.filter((planet) => planet.status === "sale")
       .map(planet => (<ProductCard className="saleCard"  addProducts={() => props.addProducts(planet)} key={planet.id} price={planet.price} title={planet.title} text={planet.text} status={planet.status} path={planet.path} />
     ))}
     </Carousel>

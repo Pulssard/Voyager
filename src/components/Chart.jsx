@@ -35,7 +35,7 @@ import Modals from "./Modal";
         const updatedProducts = products.filter(item => item.id !== id);
         setProducts(updatedProducts);
         props.deleteItem(id);
-        changeAmount();
+        changeAmount(1, id);//if product was deleted, and after was added again, the previous quantity will be updated to 1.
     }
          
     function handleChange(event){
@@ -104,7 +104,7 @@ import Modals from "./Modal";
           aria-label="Recipient's username"
           aria-describedby="basic-addon2"
         />
-        <Button onClick={handleClick}  variant="outline-secondary" id="button-addon2">
+        <Button onClick={handleClick}  variant="outline-secondary" >
           Submit
         </Button>
       </InputGroup>

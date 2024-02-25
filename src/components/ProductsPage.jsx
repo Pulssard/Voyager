@@ -7,12 +7,23 @@ import Col from "react-bootstrap/Col";
 import Dropdown from 'react-bootstrap/Dropdown';
 import DropdownButton from 'react-bootstrap/DropdownButton';
 import RocketOutlinedIcon from '@mui/icons-material/RocketOutlined';
+import Pagination from 'react-bootstrap/Pagination';
 
 function ProductsPage(props){
     const [sortBy, setSortBy] = useState(null);
     const [showProducts, setShowProducts] = useState([]);
+    const [page,setPage] = useState(1);
+    const itemsPerPage = 6;
+    let items = [];
 
+    const changePage = (event) => {
+        const page = parseInt(event.target.innerText);
+        setPage(page);
+    };
+
+    let sortedProducts = [...showProducts];
     function filterProducts(filter) {
+        setPage(1); //when this function is triggered(to filter the products, the page will be change to 1, so the active page, by default would be the first one)
         switch (filter) {
             case "planets":
                 setShowProducts([...planets]);
@@ -30,6 +41,7 @@ function ProductsPage(props){
                 // Show all products if filter doesn't match any specific category
                 setShowProducts([...planets, ...constellations, ...stars, ...galaxies]);
                 break;
+                
         }
         console.log(filter);
     }
@@ -39,7 +51,7 @@ function ProductsPage(props){
         filterProducts(props.filter); // Assuming props.filter contains the filter value
     }, [props.filter]);
     
-
+    
 
     const sortAsc = () => {
         setSortBy('asc');
@@ -57,6 +69,24 @@ function ProductsPage(props){
         showProducts.sort((a, b) => b.price - a.price);
     }
 
+    const pages = Math.ceil(sortedProducts.length / itemsPerPage);
+
+   
+        
+    for (let number = 1; number <= pages; number++) {
+        items.push(
+            <Pagination.Item onClick={changePage} key={number} active={number === page}>
+                {number}
+            </Pagination.Item>
+        );
+    }
+
+
+    const firstIndex = (itemsPerPage * page) - itemsPerPage;
+    const lastIndex = (itemsPerPage * page);
+    const slicedProducts = sortedProducts.slice(firstIndex, lastIndex);
+
+
     return(
         <Row>
         <Col   md={3}>
@@ -68,11 +98,14 @@ function ProductsPage(props){
                 <Dropdown.Item as="button" onClick={sortDesc}> Price <RocketOutlinedIcon id="rocket-down" /> </Dropdown.Item>
             </DropdownButton>
             <div className="productsCarousel ">
-            { showProducts.map( product => (
+            { slicedProducts.map( product => (
             <ProductCard   addProducts={() => props.addProducts(product)} key={product.id} price={product.price} title={product.title} text={product.text} status={product.status}/>
             ))}
             </div>
         </Col>
+        <div className="pagination" >
+            {items.length > 1 && <Pagination size="lg">{items}</Pagination>} 
+        </div>
         </Row>
       ); 
 }
